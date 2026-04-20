@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deyber Hernández González — Ingeniero en Sistemas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-0: #08090d;
+  --bg-1: #0f1117;
+  --bg-2: #161921;
+  --bg-3: #1c2028;
+  --border: rgba(255,255,255,0.06);
+  --border-h: rgba(96,165,250,0.3);
+  --t1: #eef0f4;
+  --t2: #8d97a8;
+  --t3: #4e5666;
+  --ac: #60a5fa;
+  --ac-d: rgba(96,165,250,0.10);
+  --tl: #2dd4bf;
+  --tl-d: rgba(45,212,191,0.09);
+  --am: rgba(251,191,36,0.10);
+  --amc: #fbbf24;
+  --nav: 62px;
+  --r: 11px;
+  --f1: 'Syne', sans-serif;
+  --f2: 'DM Sans', sans-serif;
+  --f3: 'DM Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg-0);color:var(--t1);font-family:var(--f2);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:rgba(8,9,13,0.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.logo{font-family:var(--f1);font-weight:800;font-size:1.05rem;letter-spacing:-0.02em;color:var(--t1);text-decoration:none}
+.logo em{color:var(--ac);font-style:normal}
+.nav-ul{display:flex;gap:2rem;list-style:none}
+.nav-ul a{font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--t2);text-decoration:none;transition:color .2s}
+.nav-ul a:hover{color:var(--ac)}
+.nav-btn{font-size:0.78rem;font-weight:500;padding:7px 16px;border:1px solid var(--ac);border-radius:6px;color:var(--ac);text-decoration:none;transition:background .2s,color .2s}
+.nav-btn:hover{background:var(--ac);color:var(--bg-0)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.burger span{display:block;width:22px;height:2px;background:var(--t2);border-radius:2px;transition:.3s}
+.mob-nav{display:none;position:fixed;top:var(--nav);left:0;right:0;background:var(--bg-1);border-bottom:1px solid var(--border);padding:1.4rem 6%;flex-direction:column;gap:.8rem;z-index:199}
+.mob-nav a{color:var(--t2);text-decoration:none;font-size:.88rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;padding:.4rem 0;border-bottom:1px solid var(--border)}
+.mob-nav.open{display:flex}
+
+/* HERO */
+.hero{min-height:100vh;padding:calc(var(--nav) + 7rem) 6% 6rem;display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-15%;right:-8%;width:550px;height:550px;background:radial-gradient(circle,rgba(96,165,250,.07) 0%,transparent 68%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:5%;left:10%;width:380px;height:380px;background:radial-gradient(circle,rgba(45,212,191,.05) 0%,transparent 68%);pointer-events:none}
+.htag{display:inline-flex;align-items:center;gap:7px;font-family:var(--f3);font-size:.72rem;color:var(--ac);background:var(--ac-d);border:1px solid rgba(96,165,250,.18);padding:5px 13px;border-radius:100px;margin-bottom:1.4rem;letter-spacing:.04em}
+.htag::before{content:'▸'}
+.hname{font-family:var(--f1);font-size:clamp(2.6rem,4.8vw,4.2rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:.9rem}
+.hname .ac{color:var(--ac)}
+.htitle{font-size:1.05rem;color:var(--t2);font-weight:300;margin-bottom:.4rem}
+.hloc{font-family:var(--f3);font-size:.75rem;color:var(--t3);letter-spacing:.04em;margin-bottom:1.8rem}
+.hdesc{font-size:.96rem;color:var(--t2);line-height:1.85;max-width:460px;margin-bottom:2.2rem}
+.hbtns{display:flex;gap:.9rem;flex-wrap:wrap}
+.btn-p{padding:11px 26px;background:var(--ac);color:var(--bg-0);border-radius:8px;font-weight:500;font-size:.88rem;text-decoration:none;transition:opacity .2s,transform .2s;display:inline-block}
+.btn-p:hover{opacity:.85;transform:translateY(-2px)}
+.btn-o{padding:11px 26px;border:1px solid var(--border-h);color:var(--ac);border-radius:8px;font-size:.88rem;font-weight:500;text-decoration:none;transition:background .2s;display:inline-block}
+.btn-o:hover{background:var(--ac-d)}
+.hstats{display:flex;gap:2rem;margin-top:2.8rem;padding-top:2rem;border-top:1px solid var(--border);flex-wrap:wrap}
+.snum{font-family:var(--f1);font-size:1.8rem;font-weight:800;color:var(--ac);line-height:1}
+.slbl{font-size:.73rem;color:var(--t3);margin-top:3px;letter-spacing:.03em;max-width:100px}
+
+/* TERMINAL CARD */
+.tcard{background:var(--bg-2);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.tbar{display:flex;align-items:center;gap:7px;padding:12px 16px;background:var(--bg-3);border-bottom:1px solid var(--border)}
+.dot{width:10px;height:10px;border-radius:50%}
+.dr{background:#f87171}.dy{background:#fbbf24}.dg{background:#4ade80}
+.tbartitle{font-family:var(--f3);font-size:.7rem;color:var(--t3);margin:0 auto}
+.tbody{padding:1.6rem}
+.cl{font-family:var(--f3);font-size:.8rem;line-height:2;color:var(--t2)}
+.cl .k{color:#c084fc}.cl .s{color:#86efac}.cl .c{color:var(--ac)}.cl .n{color:var(--tl)}.cl .cm{color:var(--t3)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:1.3rem}
+.chip{font-family:var(--f3);font-size:.7rem;padding:3px 11px;border-radius:100px;background:var(--bg-3);color:var(--t2);border:1px solid var(--border)}
+.chip.b{background:var(--ac-d);color:var(--ac);border-color:rgba(96,165,250,.18)}
+.chip.t{background:var(--tl-d);color:var(--tl);border-color:rgba(45,212,191,.18)}
+
+/* SECTIONS */
+section{padding:5.5rem 6%}
+section:nth-child(even){background:var(--bg-1)}
+.slabel{font-family:var(--f3);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);margin-bottom:.4rem}
+.stitle{font-family:var(--f1);font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.8rem;line-height:1.1}
+.ssub{color:var(--t2);font-size:.95rem;max-width:520px;margin-bottom:3rem}
+
+/* SOBRE MÍ */
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start;margin-top:2.5rem}
+.atext p{color:var(--t2);margin-bottom:.9rem;font-size:.94rem}
+.atext p strong{color:var(--t1);font-weight:500}
+.apills{display:flex;flex-wrap:wrap;gap:7px;margin-top:1.3rem}
+.apill{font-size:.78rem;padding:5px 13px;border-radius:8px;background:var(--bg-3);color:var(--t2);border:1px solid var(--border)}
+.acards{display:flex;flex-direction:column;gap:.9rem}
+.acard{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r);padding:1.2rem 1.4rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color .2s}
+.acard:hover{border-color:var(--border-h)}
+.aico{width:38px;height:38px;flex-shrink:0;background:var(--ac-d);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.aico.t{background:var(--tl-d)}
+.actitle{font-weight:500;font-size:.9rem;margin-bottom:2px}
+.actext{font-size:.8rem;color:var(--t2)}
+
+/* EXPERIENCIA */
+.tl{position:relative;padding-left:1.8rem;margin-top:2.5rem}
+.tl::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--border)}
+.tli{position:relative;padding-bottom:2.8rem}
+.tli:last-child{padding-bottom:0}
+.tldot{position:absolute;left:-1.8rem;width:9px;height:9px;border-radius:50%;background:var(--ac);top:8px;box-shadow:0 0 0 4px var(--ac-d);transform:translateX(-4px)}
+.tldate{font-family:var(--f3);font-size:.7rem;color:var(--t3);letter-spacing:.05em;margin-bottom:.35rem}
+.tlrole{font-family:var(--f1);font-size:1.05rem;font-weight:700;margin-bottom:1px}
+.tlorg{font-size:.83rem;color:var(--ac);margin-bottom:.7rem}
+.tldesc{font-size:.86rem;color:var(--t2);max-width:580px;line-height:1.75}
+.tltags{display:flex;flex-wrap:wrap;gap:5px;margin-top:.7rem}
+.tltag{font-size:.7rem;padding:2px 9px;border-radius:6px;background:var(--bg-3);color:var(--t3);border:1px solid var(--border)}
+
+/* EDUCACIÓN */
+.egrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.3rem;margin-top:2.5rem}
+.ecard{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r);padding:1.6rem;transition:border-color .2s,transform .2s;position:relative;overflow:hidden}
+.ecard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ac),var(--tl));opacity:0;transition:opacity .3s}
+.ecard:hover{border-color:var(--border-h);transform:translateY(-3px)}
+.ecard:hover::before{opacity:1}
+.eyear{font-family:var(--f3);font-size:.7rem;color:var(--t3);margin-bottom:.7rem}
+.edeg{font-family:var(--f1);font-size:.97rem;font-weight:700;margin-bottom:3px;line-height:1.3}
+.einst{font-size:.82rem;color:var(--ac);margin-bottom:.7rem}
+.ebadge{display:inline-block;font-size:.68rem;padding:2px 9px;border-radius:100px;background:var(--tl-d);color:var(--tl);border:1px solid rgba(45,212,191,.18);margin-top:.6rem}
+
+/* HABILIDADES */
+.skgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.3rem;margin-top:2.5rem}
+.skcard{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r);padding:1.4rem;transition:border-color .2s}
+.skcard:hover{border-color:var(--border-h)}
+.skcateg{font-size:.75rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--t3);margin-bottom:.85rem}
+.skitems{display:flex;flex-wrap:wrap;gap:7px}
+.ski{font-size:.76rem;padding:4px 11px;border-radius:7px;background:var(--bg-3);color:var(--t2);border:1px solid var(--border);font-family:var(--f3);transition:border-color .2s,color .2s}
+.ski:hover{border-color:var(--border-h);color:var(--t1)}
+
+/* PROYECTOS */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.3rem;margin-top:2.5rem}
+.pcard{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r);padding:1.6rem;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.pcard:hover{border-color:var(--border-h);transform:translateY(-3px)}
+.pnum{font-family:var(--f3);font-size:.68rem;color:var(--t3);margin-bottom:.9rem}
+.ptitle{font-family:var(--f1);font-size:1.02rem;font-weight:700;margin-bottom:.5rem;line-height:1.3}
+.pdesc{font-size:.83rem;color:var(--t2);line-height:1.75;flex:1;margin-bottom:1rem}
+.ptags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.9rem}
+.ptag{font-size:.68rem;padding:2px 9px;border-radius:6px;font-family:var(--f3)}
+.ptag.a{background:var(--ac-d);color:var(--ac);border:1px solid rgba(96,165,250,.18)}
+.ptag.t{background:var(--tl-d);color:var(--tl);border:1px solid rgba(45,212,191,.18)}
+.ptag.g{background:rgba(74,222,128,.07);color:#4ade80;border:1px solid rgba(74,222,128,.18)}
+.plink{display:inline-flex;align-items:center;gap:5px;font-size:.75rem;font-family:var(--f3);color:var(--ac);text-decoration:none;margin-top:auto;transition:opacity .2s}
+.plink:hover{opacity:.7}
+.plink svg{width:12px;height:12px}
+
+/* CERTIFICACIONES */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.9rem;margin-top:2.5rem}
+.ccard{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem 1.3rem;display:flex;align-items:flex-start;gap:.9rem;transition:border-color .2s}
+.ccard:hover{border-color:var(--border-h)}
+.cico{width:34px;height:34px;flex-shrink:0;background:var(--ac-d);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.ctitle{font-size:.85rem;font-weight:500;line-height:1.3;margin-bottom:2px}
+.corg{font-size:.73rem;color:var(--ac)}
+
+/* PUBLICACIONES */
+.publist{display:flex;flex-direction:column;gap:1.1rem;margin-top:2.5rem}
+.pubcard{background:var(--bg-2);border:1px solid var(--border);border-left:3px solid var(--ac);border-radius:0 var(--r) var(--r) 0;padding:1.3rem 1.5rem;transition:border-color .2s}
+.pubcard:hover{border-left-color:var(--tl)}
+.pubtype{font-family:var(--f3);font-size:.68rem;color:var(--t3);margin-bottom:.35rem;letter-spacing:.06em;text-transform:uppercase}
+.pubtitle{font-weight:500;font-size:.93rem;margin-bottom:.35rem}
+.pubauth{font-size:.8rem;color:var(--t2);margin-bottom:.25rem}
+.pubvenue{font-size:.78rem;color:var(--ac);font-style:italic}
+
+/* CONTACTO */
+#contacto{text-align:center}
+.cinner{max-width:580px;margin:0 auto}
+.cemail{font-family:var(--f1);font-size:clamp(1.3rem,2.8vw,1.9rem);font-weight:800;letter-spacing:-.02em;color:var(--ac);text-decoration:none;display:block;margin:1.8rem 0;transition:opacity .2s}
+.cemail:hover{opacity:.72}
+.socials{display:flex;justify-content:center;gap:.9rem;flex-wrap:wrap}
+.social{display:flex;align-items:center;gap:7px;font-size:.83rem;font-weight:500;padding:9px 18px;border:1px solid var(--border);border-radius:8px;color:var(--t2);text-decoration:none;transition:border-color .2s,color .2s}
+.social:hover{border-color:var(--border-h);color:var(--ac)}
+.social svg{width:15px;height:15px;flex-shrink:0}
+
+/* FOOTER */
+footer{padding:1.8rem 6%;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;font-size:.75rem;color:var(--t3);font-family:var(--f3);flex-wrap:wrap;gap:.5rem}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}
+.rv.on{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:920px){
+  .hero{grid-template-columns:1fr;gap:2.5rem;padding-top:calc(var(--nav) + 3.5rem)}
+  .tcard{display:none}
+  .agrid{grid-template-columns:1fr;gap:2rem}
+  .nav-ul,.nav-btn{display:none}
+  .burger{display:flex}
+}
+@media(max-width:580px){
+  section{padding:4rem 5%}
+  .egrid,.skgrid,.pgrid,.cgrid{grid-template-columns:1fr}
+  .hstats{gap:1.2rem}
+  footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#inicio">DHG<em>.</em>dev</a>
+  <ul class="nav-ul">
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#experiencia">Experiencia</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#educacion">Educación</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a class="nav-btn" href="#contacto">Contactar</a>
+  <button class="burger" onclick="document.querySelector('.mob-nav').classList.toggle('open')" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mob-nav">
+  <a href="#sobre-mi" onclick="this.closest('.mob-nav').classList.remove('open')">Sobre mí</a>
+  <a href="#experiencia" onclick="this.closest('.mob-nav').classList.remove('open')">Experiencia</a>
+  <a href="#educacion" onclick="this.closest('.mob-nav').classList.remove('open')">Educación</a>
+  <a href="#habilidades" onclick="this.closest('.mob-nav').classList.remove('open')">Habilidades</a>
+  <a href="#proyectos" onclick="this.closest('.mob-nav').classList.remove('open')">Proyectos</a>
+  <a href="#contacto" onclick="this.closest('.mob-nav').classList.remove('open')">Contacto</a>
+</div>
+
+<!-- HERO -->
+<section id="inicio" class="hero">
+  <div>
+    <div class="htag">Disponible para colaboraciones</div>
+    <h1 class="hname">Deyber<br><span class="ac">Hernández</span><br>González</h1>
+    <p class="htitle">Ingeniero en Sistemas · Costa Rica 🇨🇷</p>
+    <p class="hloc">INA — Docente &nbsp;·&nbsp; TEC — MSc. Ciberseguridad (en curso)</p>
+    <p class="hdesc">Apasionado por la ciberseguridad y las blockchains. Más de 10 años formando profesionales en informática, combinando docencia, investigación y desarrollo de soluciones tecnológicas.</p>
+    <div class="hbtns">
+      <a class="btn-p" href="#contacto">Contactar</a>
+      <a class="btn-o" href="#proyectos">Ver proyectos</a>
+    </div>
+    <div class="hstats">
+      <div>
+        <div class="snum">10+</div>
+        <div class="slbl">Años en docencia informática</div>
+      </div>
+      <div>
+        <div class="snum">INA</div>
+        <div class="slbl">Docente activo</div>
+      </div>
+      <div>
+        <div class="snum">TEC</div>
+        <div class="slbl">MSc. Ciberseguridad</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tcard rv">
+    <div class="tbar">
+      <div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div>
+      <div class="tbartitle">perfil.json</div>
+    </div>
+    <div class="tbody">
+      <div class="cl"><span class="k">const</span> <span class="n">dev</span> = {</div>
+      <div class="cl">&nbsp;&nbsp;<span class="c">nombre</span>: <span class="s">"Deyber Hernández G."</span>,</div>
+      <div class="cl">&nbsp;&nbsp;<span class="c">rol</span>: <span class="s">"Ing. Sistemas & Docente"</span>,</div>
+      <div class="cl">&nbsp;&nbsp;<span class="c">ubicacion</span>: <span class="s">"Costa Rica 🇨🇷"</span>,</div>
+      <div class="cl">&nbsp;&nbsp;<span class="c">maestria</span>: <span class="s">"Ciberseguridad @ TEC"</span>,</div>
+      <div class="cl">&nbsp;&nbsp;<span class="c">docencia</span>: <span class="s">"Informática @ INA"</span>,</div>
+      <div class="cl">&nbsp;&nbsp;<span class="c">foco</span>: [<span class="s">"Cybersecurity"</span>, <span class="s">"Blockchain"</span>]</div>
+      <div class="cl">}</div>
+      <div class="chips">
+        <span class="chip b">Solidity</span>
+        <span class="chip b">Python</span>
+        <span class="chip t">Criptografía</span>
+        <span class="chip t">ZKP</span>
+        <span class="chip">Linux</span>
+        <span class="chip">Docker</span>
+        <span class="chip b">Blockchain</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section id="sobre-mi">
+  <div class="slabel">01 — sobre mí</div>
+  <h2 class="stitle rv">Quién soy</h2>
+  <div class="agrid">
+    <div class="atext rv">
+      <p>Soy <strong>Ingeniero en Sistemas</strong> con Bachillerato y Licenciatura por la UACA, actualmente en la etapa final de la <strong>Maestría en Ciberseguridad en el Instituto Tecnológico de Costa Rica (TEC)</strong>.</p>
+      <p>Cuento con más de <strong>10 años de experiencia como docente de Informática en el INA</strong>, donde he formado a cientos de profesionales técnicos áreas de informatica. Paralelamente he trabajado en el sector público y privado como ingeniero en sistemas.</p>
+      <p>Mi pasión está en la <strong>ciberseguridad aplicada y la tecnología blockchain</strong>, áreas en las que combino investigación académica con desarrollo de proyectos reales.</p>
+      <div class="apills">
+        <span class="apill">Ciberseguridad</span>
+        <span class="apill">Criptografía</span>
+        <span class="apill">Blockchain</span>
+        <span class="apill">Redes</span>
+        <span class="apill">Machine Learning</span>
+        <span class="apill">Docencia técnica</span>
+      </div>
+    </div>
+    <div class="acards rv">
+      <div class="acard">
+        <div class="aico">🎓</div>
+        <div>
+          <div class="actitle">Docencia — más de 10 años</div>
+          <div class="actext">Enseñando informática en el INA: programación, redes, bases de datos y seguridad informática.</div>
+        </div>
+      </div>
+      <div class="acard">
+        <div class="aico">🔐</div>
+        <div>
+          <div class="actitle">Seguridad — investigación aplicada</div>
+          <div class="actext">Investigación en criptografía, análisis de vulnerabilidades y sistemas seguros.</div>
+        </div>
+      </div>
+      <div class="acard">
+        <div class="aico t">⛓️</div>
+        <div>
+          <div class="actitle">Blockchain — desarrollo con ZKP</div>
+          <div class="actext">Diseño de sistemas descentralizados con zero-knowledge proofs y contratos inteligentes.</div>
+        </div>
+      </div>
+      <div class="acard">
+        <div class="aico t">💻</div>
+        <div>
+          <div class="actitle">Desarrollo — apps web y a medida</div>
+          <div class="actext">Soluciones de software orientadas a necesidades reales del entorno costarricense.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCIA -->
+<section id="experiencia">
+  <div class="slabel">02 — experiencia</div>
+  <h2 class="stitle rv">Trayectoria profesional</h2>
+  <p class="ssub rv">Roles en docencia pública, ingeniería de sistemas e infraestructura tecnológica.</p>
+  <div class="tl">
+    <div class="tli rv">
+      <div class="tldot"></div>
+      <div class="tldate">2013 — Presente</div>
+      <div class="tlrole">Docente de Informática</div>
+      <div class="tlorg">Instituto Nacional de Aprendizaje (INA) · Costa Rica</div>
+      <div class="tldesc">Impartición de cursos técnicos de informática en general: programación, redes, bases de datos, sistemas operativos y seguridad informática. Formación de profesionales técnicos para el mercado laboral costarricense.</div>
+      <div class="tltags">
+        <span class="tltag">Docencia</span><span class="tltag">Programación</span><span class="tltag">Redes</span><span class="tltag">Seguridad</span><span class="tltag">Bases de datos</span>
+      </div>
+    </div>
+    <div class="tli rv">
+      <div class="tldot"></div>
+      <div class="tldate">2014 — 2017</div>
+      <div class="tlrole">Ingeniero en Sistemas</div>
+      <div class="tlorg">Caja Costarricense de Seguro Social (CCSS) · Costa Rica</div>
+      <div class="tldesc">Soporte técnico en el área de informática, mantenimiento de servidores, administración de sistemas de información institucional y atención a usuarios internos.</div>
+      <div class="tltags">
+        <span class="tltag">Servidores</span><span class="tltag">Soporte TI</span><span class="tltag">Sistemas institucionales</span><span class="tltag">Linux</span><span class="tltag">Windows Server</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCACIÓN -->
+<section id="educacion">
+  <div class="slabel">03 — educación</div>
+  <h2 class="stitle rv">Formación académica</h2>
+  <div class="egrid">
+    <div class="ecard rv">
+      <div class="eyear">2024 — En curso</div>
+      <div class="edeg">Maestría en Ciberseguridad</div>
+      <div class="einst">Instituto Tecnológico de Costa Rica (TEC)</div>
+      <span class="ebadge">En progreso</span>
+    </div>
+    <div class="ecard rv">
+      <div class="eyear">2010 — 2014</div>
+      <div class="edeg">Licenciatura en Ingeniería en Sistemas</div>
+      <div class="einst">Universidad Autónoma de Centro América (UACA)</div>
+    </div>
+    <div class="ecard rv">
+      <div class="eyear">2015 — 2016</div>
+      <div class="edeg">Bachillerato en Ingeniería en Sistemas</div>
+      <div class="einst">Universidad Autónoma de Centro América (UACA)</div>
+    </div>
+  </div>
+</section>
+
+<!-- HABILIDADES -->
+<section id="habilidades">
+  <div class="slabel">04 — habilidades</div>
+  <h2 class="stitle rv">Stack técnico</h2>
+  <div class="skgrid">
+    <div class="skcard rv">
+      <div class="skcateg">Lenguajes</div>
+      <div class="skitems">
+        <span class="ski">Java</span><span class="ski">JavaScript</span><span class="ski">SQL</span><span class="ski">.NET</span><span class="ski">HTML5</span><span class="ski">CSS</span><span class="ski">Solidity</span><span class="ski">C</span><span class="ski">C++</span>
+      </div>
+    </div>
+    <div class="skcard rv">
+      <div class="skcateg">Herramientas & entornos</div>
+      <div class="skitems">
+        <span class="ski">Linux</span><span class="ski">VS Code</span><span class="ski">Android Studio</span><span class="ski">Docker</span><span class="ski">Git</span><span class="ski">Google Colab</span><span class="ski">Hardhat</span><span class="ski">MetaMask</span>
+      </div>
+    </div>
+    <div class="skcard rv">
+      <div class="skcateg">Ciberseguridad</div>
+      <div class="skitems">
+        <span class="ski">Criptografía</span><span class="ski">Cifrado simétrico</span><span class="ski">RSA</span><span class="ski">ZKP</span><span class="ski">ECDSA</span><span class="ski">LFSR</span><span class="ski">Pentesting</span><span class="ski">Seguridad ofensiva</span><span class="ski">Análisis forense</span><span class="ski">Kali Linux</span>
+      </div>
+    </div>
+    <div class="skcard rv">
+      <div class="skcateg">Redes & infraestructura</div>
+      <div class="skitems">
+        <span class="ski">TCP/IP</span><span class="ski">Cisco</span><span class="ski">VLANs</span><span class="ski">Firewalls</span><span class="ski">VirtualBox</span>
+      </div>
+    </div>
+    <div class="skcard rv">
+      <div class="skcateg">Bases de datos</div>
+      <div class="skitems">
+        <span class="ski">MySQL</span><span class="ski">PostgreSQL</span><span class="ski">MongoDB</span>
+      </div>
+    </div>
+    <div class="skcard rv">
+      <div class="skcateg">Blockchain & Web3</div>
+      <div class="skitems">
+        <span class="ski">Solidity</span><span class="ski">Ethers.js</span><span class="ski">IPFS</span><span class="ski">Smart Contracts</span><span class="ski">Ethereum</span><span class="ski">Web3</span>
+      </div>
+    </div>
+    <div class="skcard rv">
+      <div class="skcateg">AI / Machine Learning</div>
+      <div class="skitems">
+        <span class="ski">Python</span><span class="ski">Pandas</span><span class="ski">Scikit-learn</span><span class="ski">PyTorch</span><span class="ski">Optuna</span><span class="ski">NLP</span>
+      </div>
+    </div>
+    <div class="skcard rv">
+      <div class="skcateg">Idiomas</div>
+      <div class="skitems">
+        <span class="ski">Español — nativo</span><span class="ski">Inglés — básico/intermedio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos">
+  <div class="slabel">05 — proyectos</div>
+  <h2 class="stitle rv">Proyectos destacados</h2>
+  <div class="pgrid">
+    <div class="pcard rv">
+      <div class="pnum">01 · Blockchain</div>
+      <div class="ptitle">Sistema de Votación con ZKP</div>
+      <div class="pdesc">Votación electrónica descentralizada que garantiza la privacidad del votante mediante zero-knowledge proofs. Contratos inteligentes sobre Ethereum.</div>
+      <div class="ptags">
+        <span class="ptag a">Solidity</span><span class="ptag a">Ethereum</span><span class="ptag t">ZKP</span>
+      </div>
+    </div>
+    <div class="pcard rv">
+      <div class="pnum">02 · Blockchain</div>
+      <div class="ptitle">CertiBlock — Validación de Documentos</div>
+      <div class="pdesc">Sistema de registro documental en blockchain para validación de certificados y documentos de forma descentralizada e inmutable. Almacenamiento distribuido con IPFS.</div>
+      <div class="ptags">
+        <span class="ptag a">Solidity</span><span class="ptag a">Hardhat</span><span class="ptag t">Ethers.js</span><span class="ptag t">IPFS</span><span class="ptag g">MetaMask</span>
+      </div>
+      <a class="plink" href="https://github.com/Deyber13013/registro-documentos-blockchain" target="_blank">
+        Ver en GitHub <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13L13 3M13 3H7M13 3v6"/></svg>
+      </a>
+    </div>
+    <div class="pcard rv">
+      <div class="pnum">03 · Seguridad</div>
+      <div class="ptitle">Investigación IoT — Seguridad Doméstica</div>
+      <div class="pdesc">Análisis de seguridad en dispositivos inteligentes domésticos. Investigación aplicada sobre percepción de seguridad en usuarios costarricenses.</div>
+      <div class="ptags">
+        <span class="ptag t">Investigación</span><span class="ptag t">IoT</span><span class="ptag g">Seguridad</span>
+      </div>
+    </div>
+    <div class="pcard rv">
+      <div class="pnum">04 · Seguridad ofensiva</div>
+      <div class="ptitle">Laboratorios Avanzados de Seguridad Ofensiva</div>
+      <div class="pdesc">Pruebas de seguridad en sistemas operativos Linux: análisis de rootkits, explotación de vulnerabilidades del kernel y técnicas de evasión.</div>
+      <div class="ptags">
+        <span class="ptag a">Kali Linux</span><span class="ptag a">C#</span><span class="ptag t">Linux Internals</span><span class="ptag g">VirtualBox</span>
+      </div>
+      <a class="plink" href="https://github.com/Deyber13013/TEC_SO_HM3_ROOTKIT" target="_blank">
+        Ver en GitHub <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13L13 3M13 3H7M13 3v6"/></svg>
+      </a>
+    </div>
+    <div class="pcard rv">
+      <div class="pnum">05 · Machine Learning</div>
+      <div class="ptitle">Análisis de Datos para Ciberseguridad</div>
+      <div class="pdesc">Modelos predictivos y machine learning aplicado a la detección de amenazas y clasificación de ataques de red. Entrenamiento y evaluación con datasets reales.</div>
+      <div class="ptags">
+        <span class="ptag a">Python</span><span class="ptag a">Scikit-learn</span><span class="ptag t">Pandas</span><span class="ptag g">Google Colab</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICACIONES -->
+<section id="certificaciones">
+  <div class="slabel">06 — certificaciones</div>
+  <h2 class="stitle rv">Certificaciones</h2>
+  <div class="cgrid">
+    <div class="ccard rv">
+      <div class="cico">🌐</div>
+      <div>
+        <div class="ctitle">CCNA: Introduction to Networks</div>
+        <div class="corg">Cisco Networking Academy</div>
+      </div>
+    </div>
+    <div class="ccard rv">
+      <div class="cico">🛡️</div>
+      <div>
+        <div class="ctitle">Introduction to Cybersecurity</div>
+        <div class="corg">Cisco Networking Academy</div>
+      </div>
+    </div>
+    <div class="ccard rv">
+      <div class="cico">📡</div>
+      <div>
+        <div class="ctitle">Introduction to the Internet of Everything</div>
+        <div class="corg">Cisco Networking Academy</div>
+      </div>
+    </div>
+    <div class="ccard rv">
+      <div class="cico">🔗</div>
+      <div>
+        <div class="ctitle">Get Connected</div>
+        <div class="corg">Cisco Networking Academy</div>
+      </div>
+    </div>
+    <div class="ccard rv">
+      <div class="cico">🏅</div>
+      <div>
+        <div class="ctitle">Instructor — 1 Year of Service</div>
+        <div class="corg">Cisco Networking Academy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICACIONES -->
+<section id="publicaciones">
+  <div class="slabel">07 — investigación</div>
+  <h2 class="stitle rv">Investigación aplicada</h2>
+  <div class="publist">
+    <div class="pubcard rv">
+      <div class="pubtype">Proyecto de investigación · Maestría TEC</div>
+      <div class="pubtitle">Análisis de privacidad y seguridad en registros de salud digital — CCSS (EDUS)</div>
+      <div class="pubauth">Hernández González, D. — TEC, Maestría en Ciberseguridad</div>
+      <div class="pubvenue">Contextual Integrity (Nissenbaum) · Privacy by Design · ISO/IEC 27701 · 2024</div>
+    </div>
+    <div class="pubcard rv">
+      <div class="pubtype">Investigación aplicada · Maestría TEC</div>
+      <div class="pubtitle">Percepción de seguridad en dispositivos IoT domésticos en Costa Rica</div>
+      <div class="pubauth">Hernández González, D. — TEC, Maestría en Ciberseguridad</div>
+      <div class="pubvenue">Análisis cualitativo y cuantitativo · usuarios costarricenses · 2023–2024</div>
+    </div>
+    <div class="pubcard rv">
+      <div class="pubtype">Proyecto académico · Maestría TEC</div>
+      <div class="pubtitle">Modelos predictivos con Machine Learning aplicados a la detección de ciberataques</div>
+      <div class="pubauth">Hernández González, D. — TEC</div>
+      <div class="pubvenue">Python · Scikit-learn · PyTorch · Optuna · Google Colab · 2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="cinner">
+    <div class="slabel" style="text-align:center">08 — contacto</div>
+    <h2 class="stitle rv" style="text-align:center">¿Hablamos?</h2>
+    <p class="ssub rv" style="margin:0 auto;text-align:center">Disponible para colaboraciones académicas, proyectos de seguridad o consultas técnicas.</p>
+    <a class="cemail rv" href="mailto:deihg13@hotmail.com">deihg13@hotmail.com</a>
+    <div class="socials rv">
+      <a class="social" href="https://cr.linkedin.com/in/deyber-hernandez-gonzalez-000828211" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zm2-5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></svg>
+        LinkedIn
+      </a>
+      <a class="social" href="https://github.com/Deyber13013" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a class="social" href="mailto:deihg13@hotmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Deyber Hernández González · Costa Rica 🇨🇷</span>
+  <span>Ing. en Sistemas · MSc. Ciberseguridad (TEC)</span>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('on'), i * 75);
+      obs.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.08});
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
