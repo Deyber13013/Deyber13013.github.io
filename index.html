@@ -10,7 +10,7 @@
 :root{--bg-0:#08090d;--bg-1:#0f1117;--bg-2:#161921;--bg-3:#1c2028;--border:rgba(255,255,255,0.06);--border-h:rgba(96,165,250,0.3);--t1:#eef0f4;--t2:#8d97a8;--t3:#4e5666;--ac:#60a5fa;--ac-d:rgba(96,165,250,0.10);--tl:#2dd4bf;--tl-d:rgba(45,212,191,0.09);--nav:62px;--r:11px;--f1:'Syne',sans-serif;--f2:'DM Sans',sans-serif;--f3:'DM Mono',monospace}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg-0);color:var(--t1);font-family:var(--f2);font-weight:300;line-height:1.7;overflow-x:hidden}
+body{background:linear-gradient(-45deg, var(--bg-0), #0a1a2e, var(--bg-0), #0a2e1a);background-size:400% 400%;animation:gradientShift 15s ease infinite;color:var(--t1);font-family:var(--f2);font-weight:300;line-height:1.7;overflow-x:hidden}
 nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:rgba(8,9,13,0.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
 .logo{font-family:var(--f1);font-weight:800;font-size:1.05rem;letter-spacing:-0.02em;color:var(--t1);text-decoration:none}
 .logo em{color:var(--ac);font-style:normal}
@@ -156,9 +156,15 @@ footer{padding:1.8rem 6%;border-top:1px solid var(--border);display:flex;align-i
 .rv.on{opacity:1;transform:none}
 @media(max-width:920px){.hero{grid-template-columns:1fr;gap:2.5rem;padding-top:calc(var(--nav) + 3.5rem)}.tcard{display:none}.agrid{grid-template-columns:1fr;gap:2rem}.nav-ul,.nav-btn{display:none}.burger{display:flex}}
 @media(max-width:580px){section{padding:4rem 5%}.egrid,.skgrid,.pgrid,.bgrid{grid-template-columns:1fr}.hstats{gap:1.2rem}footer{flex-direction:column;text-align:center}.cisco-instructor{flex-direction:column;text-align:center}}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 </style>
 </head>
 <body>
+<canvas id="matrix" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;opacity:0.06;"></canvas>
 
 <nav>
   <a class="logo" href="#inicio">DHG<em>.</em>dev</a>
@@ -466,6 +472,36 @@ const obs = new IntersectionObserver(entries => {
   entries.forEach((e,i) => { if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*75);obs.unobserve(e.target);} });
 },{threshold:0.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+const letters = '01ABCDEF';
+const fontSize = 14;
+let columns = Math.floor(canvas.width / fontSize);
+let drops = [];
+for (let x = 0; x < columns; x++) drops[x] = Math.random() * canvas.height / fontSize;
+
+function draw() {
+  ctx.fillStyle = 'rgba(0,0,0,0.05)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#00ff00';
+  ctx.font = fontSize + 'px monospace';
+  for (let i = 0; i < drops.length; i++) {
+    const text = letters[Math.floor(Math.random() * letters.length)];
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+    drops[i]++;
+  }
+}
+setInterval(draw, 80);
 </script>
 </body>
 </html>
