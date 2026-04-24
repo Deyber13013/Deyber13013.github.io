@@ -73,6 +73,6 @@ Every push to `main` is automatically deployed by GitHub Pages. No action requir
 
 ## Contact
 
-- Email: deyber13013@gmail.com
+- Email: deihg13@hotmail.com
 - LinkedIn: [linkedin.com/in/deyber13013](https://www.linkedin.com/in/deyber13013)
 - GitHub: [github.com/Deyber13013](https://github.com/Deyber13013)
